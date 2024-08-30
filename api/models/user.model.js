@@ -23,9 +23,7 @@ const userSchema = new mongoose.Schema({
         trim: true,
         default: "", // Default
     },
-    resumeFilename: {
-        type: String, // GridFS filename reference for the uploaded resume
-    },
+    resume: Buffer, // Store the resume as a binary buffer
     resumeContentType: {
         type: String, // MIME type of the resume | e.g. application/pdf
     },

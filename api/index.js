@@ -22,7 +22,12 @@ app.listen(3000, () => {
     console.log("Server running on port 3000");
 });
 
-app.use(cors());
+app.use(
+    cors({
+        origin: "http://localhost:5173",
+        credentials: true, // Allows cookies to be sent and received
+    })
+);
 app.use(express.json());
 app.use(cookieParser());
 

@@ -10,10 +10,7 @@ dotenv.config();
 const app = express();
 
 mongoose
-    .connect(process.env.MONGO, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
+    .connect(process.env.MONGO)
     .then(() => {
         console.log("Connected to MongoDB");
 
@@ -25,7 +22,11 @@ mongoose
         console.log("Error connecting to MongoDB", err);
     });
 
-app.use(cors());
+    app.use(cors({
+        origin: 'https://yourhr-api.onrender.com',
+        credentials: true, // This allows cookies to be included in requests
+      }));
+      
 app.use(express.json());
 app.use(cookieParser());
 

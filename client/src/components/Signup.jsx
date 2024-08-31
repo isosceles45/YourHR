@@ -12,7 +12,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://yourhr-api.onrender.com/api/user/signup', { name, email, password });
+            await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/user/signup`, { name, email, password });
             navigate('/login');
         } catch (err) {
             setError(err.response?.data?.message || 'Signup failed');

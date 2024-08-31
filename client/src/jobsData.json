@@ -1,0 +1,182 @@
+[
+    {
+        "id": 1,
+        "title": "Software Engineer",
+        "company": "Tech Corp",
+        "location": "San Francisco, CA",
+        "description": "Develop, test, and maintain software applications.",
+        "requirements": [
+            "Proficient in JavaScript, React, and Node.js",
+            "Experience with RESTful APIs",
+            "Familiar with Agile methodologies"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Product Manager",
+        "company": "Biz Solutions",
+        "location": "New York, NY",
+        "description": "Lead product development from conception to launch.",
+        "requirements": [
+            "Strong leadership and communication skills",
+            "Experience in product lifecycle management",
+            "Understanding of market trends and user needs"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "UX Designer",
+        "company": "Design Studio",
+        "location": "Remote",
+        "description": "Design and optimize user interfaces and experiences.",
+        "requirements": [
+            "Expertise in UI/UX design tools such as Figma or Sketch",
+            "Strong portfolio showcasing design skills",
+            "Knowledge of responsive design principles"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Data Scientist",
+        "company": "Analytics Hub",
+        "location": "Boston, MA",
+        "description": "Analyze large datasets to extract meaningful insights.",
+        "requirements": [
+            "Strong background in statistics and machine learning",
+            "Experience with Python, R, or similar programming languages",
+            "Familiar with big data tools such as Hadoop or Spark"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "DevOps Engineer",
+        "company": "Cloud Ops",
+        "location": "Austin, TX",
+        "description": "Maintain and improve CI/CD pipelines and cloud infrastructure.",
+        "requirements": [
+            "Proficient with AWS, Azure, or Google Cloud",
+            "Experience with containerization and orchestration (Docker, Kubernetes)",
+            "Strong scripting skills (Bash, Python)"
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Backend Developer",
+        "company": "Code Works",
+        "location": "Seattle, WA",
+        "description": "Design and implement scalable backend services.",
+        "requirements": [
+            "Strong proficiency in Java or Python",
+            "Experience with microservices architecture",
+            "Knowledge of SQL and NoSQL databases"
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Frontend Developer",
+        "company": "Creative Web",
+        "location": "Los Angeles, CA",
+        "description": "Build and maintain responsive web interfaces using modern web technologies.",
+        "requirements": [
+            "Experience with HTML, CSS, JavaScript, and React",
+            "Knowledge of cross-browser compatibility and web standards",
+            "Familiarity with version control systems like Git"
+        ]
+    },
+    {
+        "id": 8,
+        "title": "Machine Learning Engineer",
+        "company": "AI Innovators",
+        "location": "Chicago, IL",
+        "description": "Develop and deploy machine learning models for various applications.",
+        "requirements": [
+            "Strong knowledge of Python and machine learning frameworks (TensorFlow, PyTorch)",
+            "Experience with data preprocessing and feature engineering",
+            "Familiarity with cloud platforms (AWS, GCP)"
+        ]
+    },
+    {
+        "id": 9,
+        "title": "Cybersecurity Analyst",
+        "company": "SecureTech",
+        "location": "Washington, D.C.",
+        "description": "Monitor and protect network and systems from cyber threats.",
+        "requirements": [
+            "Experience with network security tools and practices",
+            "Knowledge of penetration testing and vulnerability assessment",
+            "Understanding of security protocols and encryption techniques"
+        ]
+    },
+    {
+        "id": 10,
+        "title": "Mobile App Developer",
+        "company": "Appify",
+        "location": "Miami, FL",
+        "description": "Design and develop mobile applications for iOS and Android platforms.",
+        "requirements": [
+            "Proficiency in Swift and/or Kotlin",
+            "Experience with mobile app architecture and development frameworks",
+            "Knowledge of UI/UX principles and mobile design guidelines"
+        ]
+    },
+    {
+        "id": 11,
+        "title": "Cloud Solutions Architect",
+        "company": "Global Cloud",
+        "location": "Remote",
+        "description": "Design and implement scalable cloud solutions for enterprise clients.",
+        "requirements": [
+            "Experience with AWS, Azure, or Google Cloud",
+            "Knowledge of cloud architecture patterns and best practices",
+            "Strong communication and client management skills"
+        ]
+    },
+    {
+        "id": 12,
+        "title": "QA Engineer",
+        "company": "QualityWorks",
+        "location": "Denver, CO",
+        "description": "Develop and execute test plans to ensure the quality of software products.",
+        "requirements": [
+            "Experience with automated testing tools (Selenium, JUnit)",
+            "Knowledge of software testing methodologies and processes",
+            "Strong analytical and problem-solving skills"
+        ]
+    },
+    {
+        "id": 13,
+        "title": "Blockchain Developer",
+        "company": "Crypto Innovate",
+        "location": "Austin, TX",
+        "description": "Develop and maintain blockchain-based applications and smart contracts.",
+        "requirements": [
+            "Proficiency in Solidity and Ethereum development tools",
+            "Experience with distributed ledger technology",
+            "Knowledge of cryptography and decentralized applications (dApps)"
+        ]
+    },
+    {
+        "id": 14,
+        "title": "Salesforce Administrator",
+        "company": "CRM Experts",
+        "location": "Orlando, FL",
+        "description": "Manage and optimize Salesforce CRM for business operations.",
+        "requirements": [
+            "Experience with Salesforce administration and customization",
+            "Knowledge of CRM workflows and data management",
+            "Salesforce Administrator certification preferred"
+        ]
+    },
+    {
+        "id": 15,
+        "title": "IT Support Specialist",
+        "company": "TechSupport Co.",
+        "location": "Dallas, TX",
+        "description": "Provide technical support and troubleshooting for software and hardware issues.",
+        "requirements": [
+            "Experience with Windows, Mac OS, and Linux operating systems",
+            "Knowledge of networking principles and IT infrastructure",
+            "Strong communication and customer service skills"
+        ]
+    }
+]

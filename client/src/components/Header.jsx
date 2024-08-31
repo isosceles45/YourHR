@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link,useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { RxAvatar } from "react-icons/rx";
 
@@ -39,31 +39,39 @@ const Header = () => {
     };
 
     return (
-        <header className="bg-gray-800 text-white p-4">
-            <div className="container mx-auto flex justify-between items-center">
-                <h1 className="text-xl font-bold">YourHR</h1>
-                <nav>
+        <header className="bg-gradient-to-r from-purple-600 to-blue-500 text-white shadow-md sticky top-0 z-50">
+            <div className="container mx-auto flex justify-between items-center py-4 px-6 md:px-10">
+                <Link to="/" className="text-2xl font-bold tracking-wide">
+                    YourHR
+                </Link>
+                <nav className="flex items-center">
                     {isAuthenticated ? (
-                        <div className="flex items-center space-x-4 relative">
+                        <div className="flex items-center space-x-6">
                             <button
                                 onClick={handleSignOut}
-                                className="text-white rounded"
+                                className="bg-white text-purple-600 font-semibold px-4 py-2 rounded-md shadow-md hover:bg-gray-100 transition-all duration-300"
                             >
                                 Sign Out
                             </button>
-                            <button className="px-4">
-                                <RxAvatar size={24} />
+                            <button className="text-white hover:text-gray-200 transition-all duration-300">
+                                <RxAvatar size={30} />
                             </button>
                         </div>
                     ) : (
-                        <>
-                            <Link to="/login" className="px-4">
+                        <div className="flex space-x-4">
+                            <Link
+                                to="/login"
+                                className="bg-white text-blue-600 font-semibold px-4 py-2 rounded-md shadow-md hover:bg-gray-100 transition-all duration-300"
+                            >
                                 Login
                             </Link>
-                            <Link to="/signup" className="px-4">
+                            <Link
+                                to="/signup"
+                                className="bg-white text-blue-600 font-semibold px-4 py-2 rounded-md shadow-md hover:bg-gray-100 transition-all duration-300"
+                            >
                                 Sign Up
                             </Link>
-                        </>
+                        </div>
                     )}
                 </nav>
             </div>

@@ -24,7 +24,7 @@ app.listen(3000, () => {
 
 app.use(
     cors({
-        origin: "*",
+        origin: "http://localhost:5173",
         credentials: true, // Allows cookies to be sent and received
     })
 );

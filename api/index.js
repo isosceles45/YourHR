@@ -13,20 +13,16 @@ mongoose
     .connect(process.env.MONGO)
     .then(() => {
         console.log("Connected to MongoDB");
-
-        app.listen(3000, () => {
-            console.log("Server running on port 3000");
-        });
     })
     .catch((err) => {
         console.log("Error connecting to MongoDB", err);
     });
 
-    app.use(cors({
-        origin: 'https://yourhr-api.onrender.com',
-        credentials: true, // This allows cookies to be included in requests
-      }));
-      
+app.listen(3000, () => {
+    console.log("Server running on port 3000");
+});
+
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 

@@ -103,7 +103,7 @@ export const signin = async (req, res, next) => {
 
         const { password: hashedPassword, ...userData } = validUser.toObject();
 
-        const expiryDate = new Date(Date.now() + 3600000);
+        const expiryDate = new Date(Date.now() + 24 * 60 * 60 * 1000);
         res.cookie('access_token', token, {
             httpOnly: true,   // Ensures the cookie is not accessible via JavaScript
             secure: process.env.NODE_ENV === 'production', // Sends cookie over HTTPS only in production

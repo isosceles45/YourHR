@@ -1,16 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import axios from "axios";
+
+// Utility function to get a cookie value by name
+const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+};
 
 const dummyJobs = [
     { id: 1, title: "Software Engineer", company: "Tech Corp" },
     { id: 2, title: "Product Manager", company: "Biz Solutions" },
-    { id: 3, title: "UX Designer", company: "Design Studio" }
+    { id: 3, title: "UX Designer", company: "Design Studio" },
+    { id: 4, title: "Data Scientist", company: "Analytics Hub" },
+    { id: 5, title: "DevOps Engineer", company: "Cloud Ops" },
+    { id: 6, title: "Backend Developer", company: "Code Works" },
 ];
 
 const JobList = () => {
     const [selectedJob, setSelectedJob] = useState(null);
+    const [bio, setBio] = useState("");
+    const [resume, setResume] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleClick = (job) => {
         setSelectedJob(job);
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setSelectedJob(null);
+        setBio("");
+        setResume(null);
+    };
+
+    const handleBioChange = (e) => {
+        setBio(e.target.value);
+    };
+
+    const handleResumeChange = (e) => {
+        setResume(e.target.files[0]);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("bio", bio);
+        formData.append("resume", resume);
+
+        try {
+            const response = await axios.post(
+                `${import.meta.env.VITE_BACKEND_URL}/api/user/profile/upload`,
+                formData,
+                {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        "Authorization": `Bearer ${getCookie("access_token")}`
+                    },
+                    withCredentials: true,
+                }
+            );
+
+            console.log("Profile updated successfully:", response.data);
+            handleCloseModal();
+        } catch (error) {
+            console.error(
+                "Error updating profile:",
+                error.response?.data || error.message
+            );
+        }
     };
 
     return (
@@ -28,19 +87,62 @@ const JobList = () => {
                     </li>
                 ))}
             </ul>
-            {selectedJob && (
-                <div className="mt-8 p-4 border rounded-lg">
-                    <h3 className="text-xl font-semibold mb-4">Apply for {selectedJob.title}</h3>
-                    <input
-                        type="text"
-                        placeholder="Your Bio"
-                        className="border p-2 w-full mb-4 rounded"
-                    />
-                    <input
-                        type="file"
-                        placeholder="Upload Resume"
-                        className="border p-2 w-full mb-4 rounded"
-                    />
+
+            {isModalOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+                    <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+                        <h3 className="text-xl font-semibold mb-4">
+                            Apply for {selectedJob.title}
+                        </h3>
+                        <form onSubmit={handleSubmit} className="space-y-4">
+                            <div>
+                                <label
+                                    htmlFor="bio"
+                                    className="block text-sm font-medium mb-1"
+                                >
+                                    Your Bio
+                                </label>
+                                <input
+                                    type="text"
+                                    id="bio"
+                                    value={bio}
+                                    onChange={handleBioChange}
+                                    className="border p-2 w-full rounded"
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    htmlFor="resume"
+                                    className="block text-sm font-medium mb-1"
+                                >
+                                    Upload Resume
+                                </label>
+                                <input
+                                    type="file"
+                                    id="resume"
+                                    onChange={handleResumeChange}
+                                    className="border p-2 w-full rounded"
+                                    required
+                                />
+                            </div>
+                            <div className="flex justify-end space-x-4">
+                                <button
+                                    type="button"
+                                    onClick={handleCloseModal}
+                                    className="bg-gray-500 text-white px-4 py-2 rounded"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    className="bg-blue-500 text-white px-4 py-2 rounded"
+                                >
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             )}
         </div>

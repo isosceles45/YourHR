@@ -17,12 +17,11 @@ const Login = () => {
                 { withCredentials: true } // This ensures cookies are sent and received
             );
             document.cookie = `access_token=${response.data.access_token}; path=/`;
-            console.log(response.data.access_token);
             navigate("/");
         } catch (err) {
             setError(err.response?.data?.message || "Login failed");
         }
-    };
+    };    
 
     return (
         <div className="container mx-auto p-4 max-w-sm">

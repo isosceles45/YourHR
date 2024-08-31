@@ -110,7 +110,11 @@ export const signin = async (req, res, next) => {
         res.cookie("access_token", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production", // use secure in production
-            sameSite: "strict",
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // allows cross-site cookie in production
+            domain:
+                process.env.NODE_ENV === "production"
+                    ? "yourhr-api.onrender.com"
+                    : "localhost",
             maxAge: 24 * 60 * 60 * 1000, // 1 day
         })
             .status(200)

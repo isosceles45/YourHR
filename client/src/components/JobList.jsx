@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-// Utility function to get a cookie value by name
-const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
-};
-
 const dummyJobs = [
     { id: 1, title: "Software Engineer", company: "Tech Corp" },
     { id: 2, title: "Product Manager", company: "Biz Solutions" },
@@ -42,8 +35,6 @@ const JobList = () => {
     const handleResumeChange = (e) => {
         setResume(e.target.files[0]);
     };
-
-    console.log(getCookie("access_token"));
 
     const handleSubmit = async (e) => {
         e.preventDefault();

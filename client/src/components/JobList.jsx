@@ -5,7 +5,7 @@ import axios from "axios";
 const getCookie = (name) => {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
+    if (parts.length === 2) return parts.pop().split(";").shift();
 };
 
 const dummyJobs = [
@@ -43,6 +43,8 @@ const JobList = () => {
         setResume(e.target.files[0]);
     };
 
+    console.log(getCookie("access_token"));
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
@@ -54,20 +56,17 @@ const JobList = () => {
                 `${import.meta.env.VITE_BACKEND_URL}/api/user/profile/upload`,
                 formData,
                 {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                        "Authorization": `Bearer ${getCookie("access_token")}`
-                    },
+                    headers: { "Content-Type": "multipart/form-data" },
                     withCredentials: true,
                 }
             );
-
-            console.log("Profile updated successfully:", response.data);
             handleCloseModal();
         } catch (error) {
             console.error(
                 "Error updating profile:",
-                error.response?.data || error.message
+                error.response?.data,
+                error.response?.status,
+                error.response?.headers
             );
         }
     };

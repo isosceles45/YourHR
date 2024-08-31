@@ -96,7 +96,10 @@ export const signin = async (req, res, next) => {
         const validUser = await User.findOne({ email });
         if (!validUser) return next(errorHandler(404, "User not found"));
 
-        const validPassword = bcryptjs.compareSync(password, validUser.password);
+        const validPassword = bcryptjs.compareSync(
+            password,
+            validUser.password
+        );
         if (!validPassword) return next(errorHandler(401, "Wrong credentials"));
 
         const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
@@ -104,21 +107,20 @@ export const signin = async (req, res, next) => {
         const { password: hashedPassword, ...userData } = validUser.toObject();
 
         const expiryDate = new Date(Date.now() + 24 * 60 * 60 * 1000);
-        res.cookie('access_token', token, {
-            httpOnly: true,   // Ensures the cookie is not accessible via JavaScript
-            secure: process.env.NODE_ENV === 'production', // Sends cookie over HTTPS only in production
-            sameSite: 'Lax',  // Helps prevent CSRF attacks
-            expires: expiryDate,
-        })        
-        .status(200)
-        .json({
-            message: "Signin successful!",
-        });
+        res.cookie("access_token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production", // use secure in production
+            sameSite: "strict",
+            maxAge: 24 * 60 * 60 * 1000, // 1 day
+        })
+            .status(200)
+            .json({
+                message: "Signin successful!",
+            });
     } catch (error) {
         next(error);
     }
 };
-
 
 // Signout Controller
 export const signout = (req, res) => {
